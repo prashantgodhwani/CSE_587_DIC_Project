@@ -1,0 +1,10 @@
+Django==4.2
+geopy==2.3.0
+lightfm==1.17
+nltk==3.8.1
+numpy==1.24.2
+pandas==2.0.0
+scikit_learn==1.2.2
+scipy==1.10.1
+tqdm==4.65.0
+django-cors-headers
