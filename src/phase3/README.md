@@ -50,7 +50,20 @@ Go to the aforementioned directory and execute:
 pip install -r requirements.txt
 ```
 
-## Step 7 | Boot the Server
+
+## Step 7 | Download Required Files
+Download the files containing the datasets from the below Box links and place them inside the static folder at ```recommendation_system_backend > static```
+
+https://buffalo.box.com/s/kgekm48927dqshz9vdwojcyzy83gzu30
+https://buffalo.box.com/s/sa3dgm3hvasiqwiaxdv9wuooec8arbz7
+https://buffalo.box.com/s/z7jn9q22kbd4zg557dmejzawymgcrygk
+https://buffalo.box.com/s/48vdcxnvjrqt552nlg9yjroipsyucyro
+https://buffalo.box.com/s/qt2nvd93qs0xekerb1sqh7tb40x0hrk0
+https://buffalo.box.com/s/9ve4lpcgurffm1m4lw1sreehnjp4jn3o
+https://buffalo.box.com/s/z8iyvvurz877m0huqu7mky8w916gytcu
+
+
+## Step 8 | Boot the Server
 To boot the server, all you have to do is run the following command in the parent recommendation_system_backend directory, and you will see that the server is up at port 8000:
 
 ```
