@@ -15,24 +15,28 @@ import numpy as np
 
 # Creating class contentrec_loc taking input arguments cosine_sim, latitude, longitude, restaurant review, business
 class ContentBased_locRS():
+    # taking business data and review data as input
     def __init__(self, data, bus):
         self.data = data
         self.bus = bus
+        # creating list of stop words  and removing from text column
         stop_words = set(stopwords.words('english'))
         self.bus['text'] = self.bus['text'].apply(
             lambda x: ' '.join([word for word in x.split() if word.lower() not in stop_words]))
         features = ["categories", "cuisines", "text", "stars_scaled"]
-
+        # scaling stars and combining selected features 
         self.bus['stars_scaled'] = (self.bus['stars'] - self.bus['stars'].min()) / (
                     self.bus['stars'].max() - self.bus['stars'].min())
         self.bus["combined_features"] = self.bus[features].apply(lambda x: " ".join(x.dropna().astype(str)), axis=1)
-
+        # creating object  vectorizeer
         vectorizer = TfidfVectorizer()
+        # transforming combines features to vectors
         tfidf_matrix = vectorizer.fit_transform(self.bus["combined_features"])
-
+        # finding similarity between the vectors
         cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
         self.cosine_sim = cosine_sim
 
+    # creating function get_recomendations with taking inputs as business_id(bid), location,num of recommendations for a bid
     def get_recommendations(self, bid, lat, lon, top_n=20):
         data = self.bus
         top_lst = []
@@ -75,9 +79,12 @@ class ContentBased_locRS():
             top_dict['tags'] = data.iloc[top_n_indices]["categories"]
         return top_dict, top_lst
 
+    # creating a function fit with input arguments user id, location 
     def fit(self, uid, lat, lon):
         data = self.data
+        # only selecting business ids which the user has rated greater than or equal to 3
         user_data = data[(data['user_id'] == uid) & (data['stars_x'] >= 3)]
+        # sorting by top rated 
         user_data = user_data.sort_values(by='stars_x', ascending=False)
         bid = user_data['business_id'].tolist()[:1]
         output, rec = self.get_recommendations(bid, lat, lon)
