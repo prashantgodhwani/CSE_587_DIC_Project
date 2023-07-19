@@ -1,5 +1,7 @@
 # UB Recommends
-This README file provides a step-by-step guide on how to set up and run the Django-powered back-end and front-end of UB Recommends. UB Recommends is a recommendation system that uses a collaborative filtering algorithm to recommend university courses to students.
+This README file provides a step-by-step guide on how to set up and run the Django-powered back-end and front-end of UB Recommends. UB Recommends is a recommendation system that uses a combination of collaborative, content and Hybrid filtering algorithms to recommend restaurants based on user preferences.
+
+[Project Report](https://drive.google.com/file/d/1X8kuVV5ZV5WqrqcgBF2Sm2EuReTx8VIb/view?usp=sharing)
 
 ## Step 1 | Unzip the src/ directory
 Start by unzipping the src/ directory. The src/ directory contains code for the front-end and the back-end. The back-end code is written in Python with Django as the framework, and the front-end uses vanilla HTML, CSS, Bootstrap, and JavaScript.
